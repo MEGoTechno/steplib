@@ -1,0 +1,291 @@
+.starts-bg {
+  /* background:  url(https://png.pngtree.com/png-clipart/20211031/original/pngtree-neon-geometric-memphis-pattern-png-image_6891980.png); */
+  /* animation: stars 205s linear alternate; */
+  /* min-height: 100vh; */
+  /* background-position: center; */
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* Height will follow width using aspect-ratio */
+  aspect-ratio: 5 / 4;
+  /* Keep proportional height */
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    clip-path: polygon(1% 39%, 22% 37%, 37% 41%, 50% 48%, 68% 57%, 85% 54%, 100% 41%, 100% 100%, 0% 100%);
+  }
+
+  25% {
+    clip-path: polygon(1% 39%, 22% 37%, 38% 49%, 50% 64%, 68% 70%, 84% 65%, 100% 50%, 100% 100%, 0% 100%);
+  }
+
+  50% {
+    clip-path: polygon(1% 39%, 12% 57%, 31% 64%, 53% 55%, 65% 46%, 87% 43%, 100% 40%, 100% 100%, 0% 100%);
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  pointer-events: none;
+
+}
+
+/* Outer vs inner z-index layering */
+.image-container img:nth-child(1) {
+  z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+  z-index: 2;
+  animation: animate 6s ease-in-out infinite;
+}
+
+/* Bubbles now scale relative to container size */
+.bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 10%;
+  background: rgb(100, 100, 235);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rise 10s infinite ease-in;
+}
+
+/* Size now in % */
+.bubble:nth-child(1) {
+  width: 8%;
+  height: 8%;
+  left: 13%;
+  background: green;
+  animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+  width: 4%;
+  height: 4%;
+  left: 15%;
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(2) {
+  width: 4%;
+  height: 4%;
+  left: 16%;
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(3) {
+  width: 5%;
+  height: 5%;
+  left: 12%;
+  background-color: orange;
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(4) {
+  width: 2%;
+  height: 2%;
+  left: 14%;
+  animation-duration: 11s;
+  animation-delay: 0s;
+}
+
+
+.bubble:nth-child(5) {
+  width: 8%;
+  height: 8%;
+  left: 13%;
+  background-color: pink;
+  animation-duration: 6s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(6) {
+  width: 6%;
+  height: 6%;
+  left: 15%;
+  background-color: rgb(218, 32, 32);
+  animation-duration: 8s;
+  animation-delay: 3s;
+}
+
+
+.bubble:nth-child(7) {
+  width: 3%;
+  height: 3%;
+  left: 16%;
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+/* Next 7 (right side, mirrored) */
+.bubble:nth-child(8) {
+  width: 8%;
+  height: 8%;
+  right: 13%;
+  background-color: green;
+  animation-duration: 8s;
+}
+
+.bubble:nth-child(9) {
+  width: 4%;
+  height: 4%;
+  right: 15%;
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(10) {
+  width: 10%;
+  height: 10%;
+  right: 15%;
+  background-color: orange;
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(11) {
+  width: 2%;
+  height: 2%;
+  right: 15%;
+  animation-duration: 11s;
+}
+
+.bubble:nth-child(12) {
+  width: 8%;
+  height: 8%;
+  right: 15%;
+  background-color: pink;
+  animation-duration: 6s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(13) {
+  width: 6%;
+  height: 6%;
+  right: 17%;
+  background-color: goldenrod;
+  animation-duration: 8s;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(14) {
+  width: 3%;
+  height: 3%;
+  right: 14%;
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+@keyframes rise {
+  0% {
+    bottom: 20%;
+    transform: translateX(0) scale(0.1);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+    /* smooth fade-in */
+    transform: translateX(10%) scale(.2);
+  }
+
+  30% {
+    opacity: 0.7;
+    transform: translateX(20%) scale(.3);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateX(30%) scale(.4);
+  }
+
+  65% {
+    opacity: 0.4;
+    /* fade back before disappearing */
+    transform: translateX(35%) scale(.5);
+  }
+
+  85% {
+    opacity: 0.2;
+    /* fade back before disappearing */
+    transform: translateX(30%) scale(.6);
+  }
+
+  100% {
+    bottom: 90%;
+    transform: translateX(20%) scale(.7);
+    opacity: 0;
+    /* smooth fade-out */
+  }
+}
+
+@keyframes riseToLeft {
+  0% {
+    bottom: 20%;
+    transform: translateX(0) scale(0.1);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+    /* smooth fade-in */
+    transform: translateX(-10%) scale(.2);
+  }
+
+  30% {
+    opacity: 0.7;
+    transform: translateX(-20%) scale(.3);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateX(-30%) scale(.4);
+  }
+
+  65% {
+    opacity: 0.4;
+    /* fade back before disappearing */
+    transform: translateX(-35%) scale(.5);
+  }
+
+  85% {
+    opacity: 0.2;
+    /* fade back before disappearing */
+    transform: translateX(-30%) scale(.6);
+  }
+
+  100% {
+    bottom: 90%;
+    transform: translateX(-20%) scale(.7);
+    opacity: 0;
+    /* smooth fade-out */
+  }
+}

@@ -1,5 +1,5 @@
 const expressAsyncHandler = require("express-async-handler")
-const { getAll, insertOne, updateOne, deleteOne } = require("./factoryHandler")
+// const { getAll, insertOne, updateOne, deleteOne } = require("./factoryHandler")
 const createError = require("../tools/createError")
 const { FAILED, SUCCESS } = require("../tools/statusTexts");
 const WhatsappService = require("../tools/whatsappClient"); // now w small
@@ -82,7 +82,7 @@ const getWhatsStatus = expressAsyncHandler(async (req, res, next) => {
 
 const sendWhatsMessage = expressAsyncHandler(async (req, res, next) => {
     const { to, message } = req.body
-
+    // console.log('to ==>', to, 'message ==>', message)
     const result = await whatsappService.sendMessage(whatsappId, to, message.toString());
     res.status(200).json({ message: 'send successfully', status: SUCCESS, values: result })
 })
@@ -102,14 +102,15 @@ const sendWhatsMsgFc = (phone, message) => {
 const sendWhatsFileFc = async (phone, filePath, isBytes = false, fileName = 'report.pdf') => {
     return new Promise(async (resolve, reject) => {
         try {
-            let media
-            if (isBytes) {
-                const fileBase = filePath.toString('base64');
-                media = new MessageMedia('application/pdf', fileBase, fileName)
-            } else {
-                media = MessageMedia.fromFilePath(filePath);
-            }
-            const result = await whatsappService.sendMessage(whatsappId, phone, media);
+            // let media
+            // if (isBytes) {
+            //     const fileBase = filePath.toString('base64');
+            //     media = new MessageMedia('application/pdf', fileBase, fileName)
+            // } else {
+            //     media = MessageMedia.fromFilePath(filePath);
+            // }
+            // const result = await whatsappService.sendMessage(whatsappId, phone, media);
+            const result = await whatsappService.sendFile(whatsappId, phone, filePath,fileName );
             resolve(true)
         } catch (error) {
             console.log('error from sendWhatsFile', error)

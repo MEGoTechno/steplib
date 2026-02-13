@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { useEffect, useState } from 'react'
 import Section from '../../style/mui/styled/Section'
 import UserHeader from '../ui/UserHeader'
@@ -66,14 +67,14 @@ function UserHome() {
 
     const [activeCompo, setActiveCompo] = useState(0)
 
-    const btns = [
+    const btns = [] || [
         <Button endIcon={<CoursesIcon />} fullWidth key={0} variant={activeCompo === 0 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(0)}>كورساتك</Button>,
         <Button endIcon={<VidsIcon2 />} fullWidth key={1} variant={activeCompo === 1 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(1)}>محاضرات خاصه</Button>,
         // <Button fullWidth key={2} variant={activeCompo === 2 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(2)}>محتوى مجموعاتك</Button>,
         // <Button fullWidth key={3} variant={activeCompo === 3 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(3)}> محاضرات مجانيه</Button>,
     ]
 
-    const compos = [
+    const compos = [] || [
         {
             value: 0,
             compo: <AccordionStyled title={'كورساتك'} bgcolor="background.alt" expanded={openUserCourses} setExpanded={setOpenCourses}>
@@ -105,8 +106,7 @@ function UserHome() {
         // },
     ]
 
-
-    if (user.role === user_roles.STUDENT) {
+    if (user.role === user_roles.STUDENT && false) {
         btns.push(<Button fullWidth key={4} variant={activeCompo === 4 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(4)}> محاضرات السنتر</Button>,)
         compos.push({ compo: <UserLectures key={4} query={{ isCenter: true, grade: user.grade }} accordionTitle='محاضرات السنتر' />, value: 4 },)
     }
@@ -122,8 +122,9 @@ function UserHome() {
             {(user.role === user_roles.ONLINE || user.role == user_roles.STUDENT) ?
                 <Box sx={{ my: '16px' }}>
                     <TitleSection title={lang.YOUR_SUBSCRIPTIONS} />
+            <Alert sx={{direction: 'rtl'}} severity="warning" variant="filled">This will not Applied For StepLib Platform, Will be Updated According to Allowed Features</Alert>
 
-                    <Grid min='120px' sx={{ width: '100%' }}>
+                    {/* <Grid min='120px' sx={{ width: '100%' }}>
                         {btns}
                     </Grid>
                     {compos.find(compo => compo.value === activeCompo)?.compo}
@@ -131,7 +132,7 @@ function UserHome() {
                         <Separator />
                         <Separator sx={{ width: '60%', opacity: "60%" }} />
                     </FlexColumn>
-                    <LatestCourses user={user} />
+                    <LatestCourses user={user} /> */}
                 </Box>
                 : (user.role === user_roles.ADMIN || user.role == user_roles.SUBADMIN) ? <AdminHome /> : ''
             }

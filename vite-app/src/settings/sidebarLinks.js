@@ -73,6 +73,8 @@ import { isDevelop } from "../tools/isDevelop.js";
 import ManagePaymentsPage from "../pages/admin/PaymentsPage.jsx";
 import CoursesPage from "../pages/user/CoursesPage.jsx";
 import GradesManage from "../pages/admin/GradesManage.jsx";
+import { TbReportSearch } from "react-icons/tb";
+import ReportsPage from "../pages/admin/ReportsPage.jsx";
 
 const GetQuestionsPage = lazy(() => import("../pages/admin/GetQuestionsPage"))
 
@@ -147,7 +149,7 @@ export const sidebarLinks = [
     },
     {
         name: "إدارة الكورسات", icon: <FaSchool size="22px" />, to: "/management/courses", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
-        element: <ManageCoursesPage />, id: 'coursesManage'
+        element: <ManageCoursesPage />, id: 'coursesManage',isDisabled: true
     },
     //  {
     //     name: "عرض الاشتراكات", icon: <MdOutlineSubscriptions size="22px" />, to: '/statistics/courses', allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
@@ -188,21 +190,24 @@ export const sidebarLinks = [
         name: "إدارة سياسات الموقع", icon: <RiEditCircleFill size="22px" />, to: "/management/privacy", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <ManagePrivacyPage />, id: 'managePrivacy'
     }, {
+        name: "تقارير الطلاب", icon: <TbReportSearch size="22px" />, to: "/management/reports", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
+        element: <ReportsPage />, id: 'stdReports'
+    },{
         name: "المدفوعات", icon: <SignupIcon size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], // info: { title: 'تحت الانشاء', i: 2 }
     }, {
-        name: "وسائل الدفع", icon: <RiSecurePaymentFill size="22px" />, to: "/management/payments", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, info: { title: "جديد", i: 1 },
+        name: "وسائل الدفع", icon: <RiSecurePaymentFill size="22px" />, to: "/management/payments", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, 
         element: <ManagePaymentsPage />, id: 'payments'
     }, {
-        name: "الفواتير", icon: <PiInvoiceBold size="22px" />, to: "/management/invoices", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, info: { title: "جديد", i: 1 },
+        name: "الفواتير", icon: <PiInvoiceBold size="22px" />, to: "/management/invoices", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, 
         element: <InvoicesPage />, id: 'invoices'
     }, {
         name: 'المحفظه و المدفوعات', icon: <PiInvoiceBold size="22px" />, to: "/payments", allowedTo: [user_roles.ONLINE, user_roles.STUDENT],
         element: <PaymentsPage />
     }, {
-        name: "اقتراح/شكوي", icon: <VscFeedback size="22px" />, to: "/feedBacks", allowedTo: [user_roles.ONLINE, user_roles.STUDENT], info: { title: "جديد", i: 1 },
+        name: "اقتراح/شكوي", icon: <VscFeedback size="22px" />, to: "/feedBacks", allowedTo: [user_roles.ONLINE, user_roles.STUDENT], 
         element: <FeedBacks />
     }, {
-        name: "اقتراحات/شكاوي", icon: <VscFeedback size="22px" />, to: "/management/feedBacks", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        name: "اقتراحات/شكاوي", icon: <VscFeedback size="22px" />, to: "/management/feedBacks", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], 
         element: <FeedBacks isAdmin={true} />, id: 'feedBacks'
     },
 ]
@@ -269,6 +274,7 @@ const otherLinks = [
 ]
 
 export const routesLinks = [...sidebarLinks.map(link => {
+    if(link.isDisabled) return
     if (link.Component) {
         link.element = <link.Component />
     }

@@ -6,6 +6,7 @@ import { useLazyAnalysisSubscriptionsQuery } from "../../toolkit/apis/statistics
 import { useLazyAnalysisUsersByKeysQuery } from "../../toolkit/apis/usersApi"
 import PieChart from "../../tools/charts/PieChart"
 import DynamicBarChart from "../../tools/charts/BarChart"
+import { Alert } from "@mui/material"
 
 function AdminHome() {
     //this month => New Users, subscriptions, subscribed Versus Not Subscribed
@@ -23,6 +24,7 @@ function AdminHome() {
 
     return (
         <Grid>
+            <Alert sx={{direction: 'rtl'}}  severity="warning" variant="filled">This will not Applied For StepLib Platform, Will be Updated According to Allowed Features</Alert>
             <PieChart
                 title={"الطلاب الجدد هذا الشهر" + '(' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + ')'}
                 categories={categories}

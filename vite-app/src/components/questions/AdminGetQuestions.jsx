@@ -148,7 +148,7 @@ function AdminGetQuestions({ setSelectedQs, allSelected = false, filters = {}, i
             }
         }, {
             field: 'tags',
-            headerName: 'الروابط',
+            headerName: 'الموضوعات',
             width: 150,
             type: "actions",
             disableExport: true,
@@ -171,7 +171,7 @@ function AdminGetQuestions({ setSelectedQs, allSelected = false, filters = {}, i
                         return [
                             <BtnConfirm
                                 modalInfo={{
-                                    desc: 'سيتم ازاله هذا الرابط من السؤال'
+                                    desc: 'سيتم ازاله هذا الموضوع من السؤال'
                                 }}
                                 btn={<IconButton color='error' onClick={() => unLinkFc(params?.row?._id)}>
                                     <FaMinus></FaMinus>
@@ -181,7 +181,7 @@ function AdminGetQuestions({ setSelectedQs, allSelected = false, filters = {}, i
                 }
 
                 return <BtnModal
-                    btnName={'عرض الروابط'}
+                    btnName={'عرض الموضوعات'}
                     icon={<FaTags />}
                     color={'success'}
                     fullScreen={true}
@@ -208,7 +208,7 @@ function AdminGetQuestions({ setSelectedQs, allSelected = false, filters = {}, i
         }, {
             field: 'notTags',
             type: "actions",
-            headerName: 'ايضافه رابط',
+            headerName: 'ايضافه موضوع',
             disableExport: true,
 
             width: 200,
@@ -229,7 +229,7 @@ function AdminGetQuestions({ setSelectedQs, allSelected = false, filters = {}, i
                         return [
                             <BtnConfirm
                                 modalInfo={{
-                                    desc: 'سيتم اضافه هذا الرابط الي السؤال'
+                                    desc: 'سيتم اضافه هذا الموضوع الي السؤال'
                                 }}
                                 btn={<IconButton color='success' onClick={() => linkFc(params?.row?._id)}>
                                     <FaPlus></FaPlus>

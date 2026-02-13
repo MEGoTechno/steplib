@@ -26,7 +26,7 @@ function CreateTag({ setReset, defaultGrade }) {
     const inputs = [
         {
             name: 'name',
-            label: lang.NAME,
+            label: 'اسم الموضوع',
             icon: <MdOutlineDriveFileRenameOutline color='green' />,
             validation: Yup.string().required(lang.REQUERIED)
         }, {
@@ -43,6 +43,12 @@ function CreateTag({ setReset, defaultGrade }) {
             icon: <IoSchool color='green' />,
             validation: Yup.string().required(lang.REQUERIED)
 
+        }, {
+            name: 'price',
+            label: lang.PRICE,
+            type: 'number',
+            validation: Yup.number().required(lang.REQUERIED)
+
         },
     ]
 
@@ -55,7 +61,7 @@ function CreateTag({ setReset, defaultGrade }) {
     }
     return (
         <Section sx={{ width: '100%' }}>
-            <TitleWithDividers title={'انشاء رابط'} />
+            <TitleWithDividers title={'انشاء موضوع'} />
             <MakeForm inputs={inputs} btnWidth={'100%'} status={status} onSubmit={onSubmit} />
         </Section>
     )

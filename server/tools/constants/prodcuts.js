@@ -1,6 +1,6 @@
 const products = [
     { id: 'course', name: 'الاشتراك فى الكورس' },
-    { id: 'tag', name: 'الاشتراك فى رابط' },
+    { id: 'tag', name: 'الاشتراك فى موضوع' },
     { id: 'wallet', name: '' },
 ]
 

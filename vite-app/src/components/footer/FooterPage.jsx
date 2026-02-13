@@ -4,11 +4,11 @@ import Section from '../../style/mui/styled/Section'
 import Image from '../ui/Image'
 import Separator from '../ui/Separator'
 import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
-import { lang, PHONE } from '../../settings/constants/arlang'
+import { lang } from '../../settings/constants/arlang'
 import { Link } from 'react-router-dom'
 
 function FooterPage() {
-
+    //logo path Navbar - arLang - index.html - package.json - home Page - hero - typographyStyle - sidebarlinks
     return (
         <Section sx={{ minHeight: '60vh', }}>
             <Separator sx={{ borderColor: 'grey.100', borderWidth: '1px' }} />

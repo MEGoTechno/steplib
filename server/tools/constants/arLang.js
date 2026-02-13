@@ -1,7 +1,7 @@
 const arLang = {
-  LOGO: "منصة وليدالشافى",
-  LOGO_EN: "Mr Walid Abd-elshafy",
-  Mail: "mrwaleedalshafi@gmail.com",
+  LOGO: "StepLib Platform",
+  LOGO_EN: "StepLib Platform",
+  Mail: "StepLib Platform@gmail.com",
 };
 
 module.exports = { arLang };

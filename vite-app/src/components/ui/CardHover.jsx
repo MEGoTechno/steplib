@@ -4,16 +4,16 @@ import React from 'react'
 import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
 import { Link } from 'react-router-dom'
 
-function CardHover({ img, title, desc, to, children, secure = false }) {
+function CardHover({ img, title, desc, to, children, secure = false, disabled = false }) {
 
     const theme = useTheme()
 
     return (
 
-        <Card sx={{
+        <Card  sx={{
             bgcolor: 'transparent', boxShadow: theme.shadows[8], maxWidth: '400px'
         }}>
-            <CardActionArea sx={{
+            <CardActionArea disabled={disabled} sx={{
                 p: '16px', bgcolor: 'none',
                 "&::before": {
                     content: "''",

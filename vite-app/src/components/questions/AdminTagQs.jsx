@@ -52,10 +52,10 @@ function AdminTagQs({ filterTags, setFilterTags, setGrade, grade, setReset, rese
                 reset={[grade]} isLoading={tagsLoader}
                 multiple
                 value={filterTags} setValue={setFilterTags}
-                options={handelObjsOfArr(tags, { label: 'name', id: '_id' })} label={'الروابط/ الدروس'} />
+                options={handelObjsOfArr(tags, { label: 'name', id: '_id' })} label={'الموضوعات/ الموضوعات'} />
 
             <BtnModal
-                fullWidth={true} btnName={' إنشاء رابط' + ' ' + (grade ? ('للصف ' + grades.find(g => g.index === grade)?.name) : '')}
+                fullWidth={true} btnName={' إنشاء موضوع' + ' ' + (grade ? ('للصف ' + grades.find(g => g.index === grade)?.name) : '')}
                 component={<CreateTag setReset={setReset} defaultGrade={grade} />}
                 size='medium' isFilledHover={true} />
         </FlexRow>

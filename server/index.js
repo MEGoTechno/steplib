@@ -140,6 +140,7 @@ const connectDb = async () => {
     try {
         await mongoose.connect(DB_URI)
         console.log('connected')
+        //Wallet Payment Type
 
         //embed Answer to Exam answers
     } catch (error) {

@@ -18,7 +18,7 @@ function GetQuestionsPage() {
             label: 'بنك الاسئله', component: <AdminGetQuestions isShowHeader={true} />, count: data?.values?.count ?? 'laoding'
         },
         {
-            label: 'الروابط', component: <GetTags />, count: tagsCount?.values?.count ?? 'loading'
+            label: 'الموضوعات', component: <GetTags />, count: tagsCount?.values?.count ?? 'loading'
         }, {
             label: 'عرض الايجابات', component: <GetAnswers />, count: answersCount?.values?.count ?? 'loading' //<GetUserAnswers />
         },

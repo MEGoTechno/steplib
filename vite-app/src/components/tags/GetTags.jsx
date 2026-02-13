@@ -104,12 +104,12 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
     const columns = [
         {
             field: "name",
-            headerName: 'اسم الرابط',
+            headerName: 'اسم الموضوع',
             width: 200,
             editable: true
         }, {
             field: "description",
-            headerName: 'وصف الرابط',
+            headerName: 'وصف الموضوع',
             width: 200,
             editable: true
         }, {
@@ -121,7 +121,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
             valueOptions: makeArrWithValueAndLabel(grades, { value: 'index', label: 'name' }),
         }, {
             field: "price",
-            headerName: 'سعر الرابط',
+            headerName: 'سعر الموضوع',
             type: 'number',
             editable: true,
         }, {
@@ -169,7 +169,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
                             <BtnConfirm
                                 key={0}
                                 modalInfo={{
-                                    desc: 'سيتم ازاله هذا السؤال من الرابط'
+                                    desc: 'سيتم ازاله هذا السؤال من الموضوع'
                                 }}
                                 btn={<IconButton color='error' onClick={() => unLinkFc(params?.row._id)}>
                                     <FaMinus></FaMinus>
@@ -223,7 +223,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
                             <BtnConfirm
                                 key={0}
                                 modalInfo={{
-                                    desc: 'سيتم اضافه هذا السؤال الي الرابط'
+                                    desc: 'سيتم اضافه هذا السؤال الي الموضوع'
                                 }}
                                 btn={<IconButton color='success' onClick={() => linkFc(params?.row._id)}>
                                     <FaPlus></FaPlus>
@@ -250,7 +250,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
 
                         {chosenQs.length > 0 && (
                             <FilledHoverBtn onClick={() => linkFc()}>
-                                ربط الرابط ب {chosenQs.length} اسئله
+                                ربط الموضوع ب {chosenQs.length} اسئله
                             </FilledHoverBtn>
                         )}
                     </FlexColumn>}
@@ -271,12 +271,12 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
             width: 200,
             renderCell: (params) => {
                 return <BtnModal
-                    titleInSection={"كوبونات الرابط" + ' ' + params.row.name}
+                    titleInSection={"كوبونات الموضوع" + ' ' + params.row.name}
                     component={<GetCoupons tag={params.row._id}
-                        createBtnName={'انشاء كوبون للرابط ' + params.row.name}
+                        createBtnName={'انشاء كوبون للموضوع ' + params.row.name}
                     />}
                     fullScreen={true}
-                    btnName={'كوبونات الرابط'}
+                    btnName={'كوبونات الموضوع'}
                 />
             }
         }, {
@@ -288,7 +288,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
                 const tag = params.row
                 return <BtnModal
                     btnName={'الطلاب المشتركون'}
-                    titleInSection={"الطلاب المشتركون فى الرابط " + ' ' + params.row.name}
+                    titleInSection={"الطلاب المشتركون فى الموضوع " + ' ' + params.row.name}
                     component={<Users
                         reset={reset}
                         allStatuses={statuses}
@@ -323,12 +323,12 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
                 return <BtnModal
                     btnName={'الغير مشتركون'}
                     color={'error'}
-                    titleInSection={"الطلاب الغير مشتركون فى الرابط " + ' ' + tag.name}
+                    titleInSection={"الطلاب الغير مشتركون فى الموضوع " + ' ' + tag.name}
                     component={<Users
                         allStatuses={statuses}
                         reset={reset}
                         massActions={[{
-                            label: 'ايضافه المستخدمين الي الرابط ' + tag.name,
+                            label: 'ايضافه المستخدمين الي الموضوع ' + tag.name,
                             onClick: (chosenUsers) => manageUser({
                                 field: 'tags', ids: chosenUsers, value: tag._id
                             })
@@ -341,7 +341,7 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
                                 return [
                                     <BtnConfirm
                                         modalInfo={{
-                                            desc: 'سيتم اضافه هذا الطالب الي الرابط'
+                                            desc: 'سيتم اضافه هذا الطالب الي الموضوع'
                                         }}
                                         btn={<IconButton color='success'
                                             onClick={() => manageUser({
@@ -382,13 +382,13 @@ function GetTags({ filters = {}, setSelectedTags, preReset = [], addColumns, dis
     return (
         <Section>
             {isShowCreate && (
-                <BtnModal fullWidth={true} btnName={'انشاء رابط'} component={<CreateTag setReset={setReset} defaultGrade={defaultGrade} />} size='medium' isFilledHover={true} />
+                <BtnModal fullWidth={true} btnName={'انشاء موضوع'} component={<CreateTag setReset={setReset} defaultGrade={defaultGrade} />} size='medium' isFilledHover={true} />
             )}
 
             <MeDatagrid
                 type={'crud'}
                 reset={[reset, ...preReset]}
-                exportObj={exportObj(grades)} exportTitle={'الروابط'}
+                exportObj={exportObj(grades)} exportTitle={'الموضوعات'}
                 columns={modifiedCols} addColumns={addColumns}
                 // loading={status.isLoading || updateStatus.isLoading || isLoading}
                 allStatuses={statuses}

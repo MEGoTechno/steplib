@@ -55,7 +55,7 @@ function CreateReport({ course = '' }) {
                         <CourseName course={course} title={'اسم الكورس : '} />
                     )}
 
-                    <TabsAutoStyled originalTabs={tabs} />
+                    <TabsAutoStyled defaultVal={1} originalTabs={tabs} />
                     <SwitchStyled
                         checked={isExcluded}
                         onChange={setIsExcluded}

@@ -30,8 +30,9 @@ function CreateReport({ course = '' }) {
 
     const tabs = [
         {
-            value: 0, label: 'ارسال تقرير', component: <ReportCompo modalInfo={{desc: messageToSend}} isExcluded={isExcluded}
-                course={course} excludedUsers={excludedUsers} />,
+            value: 0, label: 'ارسال تقرير',
+            //  component: <ReportCompo modalInfo={{desc: messageToSend}} isExcluded={isExcluded}
+            //     course={course} excludedUsers={excludedUsers} />,
         },
         {
             value: 1, label: 'ارسال رسائل', component: <MessagesCompo modalInfo={{desc: messageToSend}}  isExcluded={isExcluded}
